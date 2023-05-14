@@ -1,0 +1,25 @@
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.link-decoration-none {
+    text-decoration: none;
+}
+
+.card-size {
+    max-width: 45%;
+}
+
+.card-size:hover {
+    cursor: pointer;
+}
+
+.img-size {
+    height: 45vh;
+}
+
+.pdf {
+    height: 100vh;
+}
