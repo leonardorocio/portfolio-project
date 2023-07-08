@@ -33,7 +33,7 @@
       class="container-fluid d-inline-flex flex-column align-items-center justify-content-center w-75 mt-4"
       id="home-body"
     >
-      <h3 class="display-3 mb-3">Projeto: API de Ecommerce</h3>
+      <h3 class="display-3 mb-3">Projeto Ecommerce</h3>
 
       <div
         class="container-fluid d-flex flex-column mt-3 border rounded border-dark p-4"
@@ -47,18 +47,43 @@
             Hibernate e autenticação utilizando tokens JWT por meio do Spring
             Security. O objetivo desse projeto é praticar a construção de APIs
             com o framework Spring Boot e utilizar Spring Data JPA para praticar
-            o uso de banco de dados, utilizar também o Spring Security para
-            praticar como funciona a segurança e diferentes métodos de
-            autenticação.
+            o uso de banco de dados com uso de repositórios (DAO), utilizar
+            também o Spring Security para praticar como funciona a segurança e
+            diferentes métodos de autenticação.
           </p>
           <p class="lead text-justify">
-            <strong
-              >Este projeto ainda está em desenvolvimento, atualmente em versão
-              1.0</strong
-            >.
+            Para o consumo dos dados dessa API, também foi desenvolvido um
+            frontend utilizando HTML, CSS e Typescript com o framework Angular,
+            com bibliotecas adicionais como o Toastr e o SweetAlert2. O objetivo
+            da construção do frontend além de consumir os dados produzidos pela
+            API do backend foi de aprender a utilizar um framework frontend
+            moderno, trabalhando com componentes, routers e outros, bem como
+            aprimorar os conhecimentos em HTML, CSS e TypeScript.
           </p>
           <p class="lead text-justify">
-            O código-fonte está disponível no meu 
+            Neste projeto também foi utilizado o Docker, onde foi criado um
+            container com suas respectivas dependências para cada parte da
+            aplicação: um para banco de dados, outro para o backend em Spring
+            Boot e mais um para o frontend em Angular. Todas as imagens estão
+            disponíveis no Docker Hub no perfil:
+            <a href="https://hub.docker.com/u/leonardorocio"
+              >https://hub.docker.com/u/leonardorocio.</a
+            >
+          </p>
+          <p class="lead text-justify">Algumas funcionalidades do sistema:</p>
+          <ul class="list-group mb-3">
+            <li class="list-group-item">Criação e autenticação de conta;</li>
+            <li class="list-group-item">Perfil de usuário com histórico de pedidos e endereços;</li>
+            <li class="list-group-item">Carrinho de compras;</li>
+            <li class="list-group-item">Escolha de frete e realização do pedido (no momento, sem pagamento);</li>
+            <li class="list-group-item">Filtro de produtos por categoria e busca por termo;</li>
+            <li class="list-group-item">Área administrativa.</li>
+          </ul>
+          <p class="lead text-justify">
+            <strong>Este projeto ainda está em desenvolvimento!</strong>.
+          </p>
+          <p class="lead text-justify">
+            O código-fonte está disponível no meu
             <a href="https://github.com/leonardorocio">Github</a>.
           </p>
         </div>
@@ -80,8 +105,8 @@
               Storage):</strong
             >
             <a
-              href="https://firebasestorage.googleapis.com/v0/b/new-todolist-8f4db.appspot.com/o/Projeto%20Ecommerce%20v1.jar?alt=media&token=489ea9e3-7f08-4672-b175-f47bf6280b6e"
-              >Projeto Ecommerce v1.0</a
+              href="https://firebasestorage.googleapis.com/v0/b/new-todolist-8f4db.appspot.com/o/Projeto%20Ecommerce%20API%20v1.1.jar?alt=media&token=c143ef8c-fe7a-4dc3-8cc5-861246e1417a"
+              >Projeto Ecommerce v1.1</a
             >
           </p>
 
@@ -97,6 +122,15 @@
             seja utilizado um arquivo como fonte de dados, dessa forma,
             facilitando a criação do pacote do projeto e também removendo a
             necessidade do usuário instalar e executar o MySQL na sua máquina.
+          </p>
+          <p class="lead text-justify">
+            - Caso tenha o Docker instalado em sua máquina, o projeto também
+            disponibiliza um arquivo docker compose para fazer a execução dos
+            containers do projeto com todas as suas dependências. O arquivo está
+            disponível em:
+            <a href="https://github.com/leonardorocio/ecommerce-project"
+              >https://github.com/leonardorocio/ecommerce-project</a
+            >
           </p>
         </div>
 
@@ -120,7 +154,7 @@
             alt="entidade-relacionamento"
             src="./images/DER.png"
           />
-          <p class="lead text-justify mt-3">
+          <!-- <p class="lead text-justify mt-3">
             <strong>Diagrama de Classes:</strong>
           </p>
           <img
@@ -134,9 +168,9 @@
             >
               Caso a visualização do diagrama de classes esteja ruim
             </a>
-          </p>
+          </p> -->
         </div>
-        <h6 class="display-6 text-justify mb-4">Endpoints:</h6>
+        <h6 class="display-6 text-justify my-3">Endpoints da API:</h6>
         <div class="d-flex flex-column justify-content-around">
           <p class="lead text-justify"><strong>Endereço: </strong></p>
           <table class="table table-bordered">
@@ -359,72 +393,34 @@
             </thead>
             <tr class="table-primary">
               <th>GET</th>
-              <td>/orderDetails</td>
+              <td>/details</td>
               <td>Retorna todos os detalhes de pedidos no banco de dados</td>
             </tr>
             <tr class="table-primary">
               <th>GET</th>
-              <td>/orderDetails/{id}</td>
+              <td>/details/{id}</td>
               <td>
                 Retorna um detalhe de pedido, identificado pelo parâmetro id
               </td>
             </tr>
             <tr class="table-success">
               <th>POST</th>
-              <td>/orderDetails</td>
+              <td>/details</td>
               <td>Cria um novo detalhe de pedido</td>
             </tr>
             <tr class="table-warning">
               <th>PUT</th>
-              <td>/orderDetails/{id}</td>
+              <td>/details/{id}</td>
               <td>
                 Atualiza um detalhe de pedido, identificado pelo parâmetro id
               </td>
             </tr>
             <tr class="table-danger">
               <th>DELETE</th>
-              <td>/orderDetails/{id}</td>
+              <td>/details/{id}</td>
               <td>
                 Apaga um detalhe de pedido, identificado pelo parâmetro id
               </td>
-            </tr>
-          </table>
-          <p class="lead text-justify"><strong>Entregas: </strong></p>
-          <table class="table table-bordered">
-            <thead>
-              <th>Método</th>
-              <th>URI</th>
-              <th>Descrição</th>
-            </thead>
-            <tr class="table-primary">
-              <th>GET</th>
-              <td>/shipments</td>
-              <td>Retorna todos as entregas no banco de dados</td>
-            </tr>
-            <tr class="table-primary">
-              <th>GET</th>
-              <td>/shipments/{id}</td>
-              <td>Retorna uma entrega, identificada pelo parâmetro id</td>
-            </tr>
-            <tr class="table-primary">
-              <th>GET</th>
-              <td>/shipments/open</td>
-              <td>Retorna todas as entregas em andamento</td>
-            </tr>
-            <tr class="table-success">
-              <th>POST</th>
-              <td>/shipments</td>
-              <td>Cria uma nova entrega</td>
-            </tr>
-            <tr class="table-warning">
-              <th>PUT</th>
-              <td>/shipments/{id}</td>
-              <td>Atualiza uma entrega, identificada pelo parâmetro id</td>
-            </tr>
-            <tr class="table-danger">
-              <th>DELETE</th>
-              <td>/shipments/{id}</td>
-              <td>Apaga uma entrega, identificada pelo parâmetro id</td>
             </tr>
           </table>
           <p class="lead text-justify"><strong>Transportadoras: </strong></p>
@@ -436,7 +432,7 @@
             </thead>
             <tr class="table-primary">
               <th>GET</th>
-              <td>/shipperts</td>
+              <td>/shippets</td>
               <td>Retorna todas as transportadoras no banco de dados</td>
             </tr>
             <tr class="table-primary">
@@ -584,7 +580,7 @@
           <p class="lead text-justify">
             - Integração com algum(ns) método(s) de pagamento;
           </p>
-          <p class="lead text-justify">- Outras mudanças menores.</p>
+          <p class="lead text-justify">- Outras mudanças menores tanto no backend como no frontend.</p>
         </div>
       </div>
     </div>
@@ -606,7 +602,9 @@
       <div class="links">
         <h5 class="display-6 text-light">Links Úteis:</h5>
         <p class="lead text-light">
-          <a class="text-light link-decoration-none" href="./index.html#projetos"
+          <a
+            class="text-light link-decoration-none"
+            href="./index.html#projetos"
             >Projetos
           </a>
         </p>
