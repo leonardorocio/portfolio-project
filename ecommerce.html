@@ -70,15 +70,45 @@
               >https://hub.docker.com/u/leonardorocio.</a
             >
           </p>
-          <p class="lead text-justify">Algumas funcionalidades do sistema:</p>
+          <p class="lead text-justify">
+            As funcionalidades do sistema basicamente as principais
+            funcionalidades de um ecommerce, como por exemplo:
+          </p>
           <ul class="list-group mb-3">
             <li class="list-group-item">Criação e autenticação de conta;</li>
-            <li class="list-group-item">Perfil de usuário com histórico de pedidos e endereços;</li>
-            <li class="list-group-item">Carrinho de compras;</li>
-            <li class="list-group-item">Escolha de frete e realização do pedido (no momento, sem pagamento);</li>
-            <li class="list-group-item">Filtro de produtos por categoria e busca por termo;</li>
+            <li class="list-group-item">
+              Criação a partir do CEP, edição e exclusão de endereços
+            </li>
+            <li class="list-group-item">
+              Perfil de usuário com histórico de pedidos e endereços;
+            </li>
+            <li class="list-group-item">
+              Carrinho de compras com resumo do pedido;
+            </li>
+            <li class="list-group-item">
+              Escolha de frete, endereço e finalização do pedido (no momento,
+              sem pagamento);
+            </li>
+            <li class="list-group-item">
+              Filtro de produtos por categoria e busca por termo;
+            </li>
             <li class="list-group-item">Área administrativa.</li>
           </ul>
+          <p class="lead text-justify">
+            Um pouco mais sobre a área administrativa:
+          </p>
+          <p class="lead text-justify">
+            Acessível apenas ao usuário administrador via página do perfil, a
+            área administrativa fornece todo o gerenciamento disponível pela API
+            de uma forma mais prática para quem vai administrar o sistema. Ela é
+            inteiramente construída com base na documentação da API fornecida
+            pela biblioteca SpringDoc, que fornece um JSON com todas informações
+            da documentação construída. A partir desse JSON, são construídos os
+            formulários das ações de cada uma das entidades, com corpo de
+            requisição e parâmetros. Então, é feito um mapeamento para cada um
+            dos serviços já existentes no frontend por meio de nome, depois o
+            método necessário dentro do serviço também é mapeado por nome.
+          </p>
           <p class="lead text-justify">
             <strong>Este projeto ainda está em desenvolvimento!</strong>.
           </p>
@@ -91,13 +121,17 @@
         <h6 class="display-6 text-justify mb-4">Instalação:</h6>
         <div class="d-flex flex-column justify-content-around">
           <p class="lead text-justify">
-            Para utilizar o projeto, basta que você tenha uma instalação do Java
-            em sua máquina, pois o projeto foi compilado em um pacote .jar pelo
-            Maven, dessa forma, basta apenas executar o arquivo e abrir o
-            navegador no link:
+            Para utilizar o projeto do backend, basta que você tenha uma
+            instalação do Java em sua máquina, pois o projeto foi compilado em
+            um pacote .jar pelo Maven, dessa forma, basta apenas executar o
+            arquivo e abrir o navegador no link:
             <a href="http://localhost:9000/swagger-ui/index.html"
               >http://localhost:9000/swagger-ui/index.html.</a
             >
+          </p>
+          <p class="lead text-justify">
+            Após executar o projeto backend, basta que você acesse a seguinte
+            URL para acessar o frontend: <a href="https://portfolio-project-e9246.web.app">https://portfolio-project-e9246.web.app</a>
           </p>
           <p class="lead flex-column">
             <strong
@@ -105,7 +139,7 @@
               Storage):</strong
             >
             <a
-              href="https://firebasestorage.googleapis.com/v0/b/new-todolist-8f4db.appspot.com/o/Projeto%20Ecommerce%20API%20v1.1.jar?alt=media&token=c143ef8c-fe7a-4dc3-8cc5-861246e1417a"
+              href="https://firebasestorage.googleapis.com/v0/b/new-todolist-8f4db.appspot.com/o/Backend%20Projeto%20Ecommerce%20v1.1.jar?alt=media&token=7138ccd3-7078-4bc4-9c80-d2f2862b6f7d"
               >Projeto Ecommerce v1.1</a
             >
           </p>
@@ -224,6 +258,22 @@
             </tr>
             <tr class="table-primary">
               <th>GET</th>
+              <td>/users/{id}/comments</td>
+              <td>
+                Retorna todos os comentários de um usuário que é identificado
+                pelo parâmetro id
+              </td>
+            </tr>
+            <tr class="table-primary">
+              <th>GET</th>
+              <td>/users/{id}/favorites</td>
+              <td>
+                Retorna todos os registros de favoritos de um usuário que é
+                identificado pelo parâmetro id
+              </td>
+            </tr>
+            <tr class="table-primary">
+              <th>GET</th>
               <td>/order/user/{id}</td>
               <td>
                 Retorna todos os pedidos de um usuário, que é baseado pelo
@@ -285,6 +335,11 @@
               <td>/products/discounted</td>
               <td>Retorna produtos ordenados pela porcentagem de desconto</td>
             </tr>
+            <tr class="table-primary">
+              <th>GET</th>
+              <td>/products/{id}/comments</td>
+              <td>Retorna os comentários de um produto identificado pelo id</td>
+            </tr>
             <tr class="table-success">
               <th>POST</th>
               <td>/products</td>
@@ -314,6 +369,13 @@
               <th>GET</th>
               <td>/category</td>
               <td>Retorna todas as categoria de produtos no banco de dados</td>
+            </tr>
+            <tr class="table-primary">
+              <th>GET</th>
+              <td>/category/{id}/products</td>
+              <td>
+                Retorna todos os produtos de uma categoria identificada pelo id
+              </td>
             </tr>
             <tr class="table-success">
               <th>POST</th>
@@ -373,7 +435,7 @@
             </tr>
             <tr class="table-warning">
               <th>PUT</th>
-              <td>/order/{id}</td>
+              <td>/order/{id}/close</td>
               <td>Fecha o pedido, identificado pelo parâmetro id</td>
             </tr>
             <tr class="table-danger">
@@ -506,6 +568,64 @@
               <td>Apaga uma entrega, identificada pelo parâmetro id</td>
             </tr>
           </table>
+          <p class="lead text-justify"><strong>Marcas: </strong></p>
+          <table class="table table-bordered">
+            <thead>
+              <th>Método</th>
+              <th>URI</th>
+              <th>Descrição</th>
+            </thead>
+            <tr class="table-primary">
+              <th>GET</th>
+              <td>/brands</td>
+              <td>Retorna todos as marcas no banco de dados</td>
+            </tr>
+            <tr class="table-primary">
+              <th>GET</th>
+              <td>/brands/{id}/products</td>
+              <td>
+                Retorna todos os produtos de uma marca identificada pelo id
+              </td>
+            </tr>
+            <tr class="table-success">
+              <th>POST</th>
+              <td>/brands</td>
+              <td>Cria uma nova marca</td>
+            </tr>
+            <tr class="table-warning">
+              <th>PUT</th>
+              <td>/brands/{id}</td>
+              <td>Atualiza uma marca, identificada pelo parâmetro id</td>
+            </tr>
+            <tr class="table-danger">
+              <th>DELETE</th>
+              <td>/brands/{id}</td>
+              <td>Apaga uma marca, identificada pelo parâmetro id</td>
+            </tr>
+          </table>
+          <p class="lead text-justify"><strong>Favoritos: </strong></p>
+          <table class="table table-bordered">
+            <thead>
+              <th>Método</th>
+              <th>URI</th>
+              <th>Descrição</th>
+            </thead>
+            <tr class="table-primary">
+              <th>GET</th>
+              <td>/favorites</td>
+              <td>Retorna todos os "favoritos" no banco de dados</td>
+            </tr>
+            <tr class="table-success">
+              <th>POST</th>
+              <td>/favorites</td>
+              <td>Favorita um produto</td>
+            </tr>
+            <tr class="table-danger">
+              <th>DELETE</th>
+              <td>/favorites/{id}</td>
+              <td>Remove um produto dos favoritos</td>
+            </tr>
+          </table>
           <p class="lead text-justify"><strong>Comentários: </strong></p>
           <table class="table table-bordered">
             <thead>
@@ -515,19 +635,8 @@
             </thead>
             <tr class="table-primary">
               <th>GET</th>
-              <td>/comments/user/{id}</td>
-              <td>
-                Retorna todos os comentários de um usuário, identificado pelo
-                parâmetro id
-              </td>
-            </tr>
-            <tr class="table-primary">
-              <th>GET</th>
-              <td>/comments/product/{id}</td>
-              <td>
-                Retorna todos os comentários de um produto, identificado pelo
-                parâmetro id
-              </td>
+              <td>/comments</td>
+              <td>Retorna todos os comentários</td>
             </tr>
             <tr class="table-success">
               <th>POST</th>
@@ -580,7 +689,9 @@
           <p class="lead text-justify">
             - Integração com algum(ns) método(s) de pagamento;
           </p>
-          <p class="lead text-justify">- Outras mudanças menores tanto no backend como no frontend.</p>
+          <p class="lead text-justify">
+            - Outras mudanças menores tanto no backend como no frontend.
+          </p>
         </div>
       </div>
     </div>
